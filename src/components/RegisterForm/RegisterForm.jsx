@@ -40,6 +40,9 @@ const RegisterForm = () => {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
+            })
+            .catch((error) => {
+                console.error(error);
             });
             console.log(response.data);
         } catch (error) {
