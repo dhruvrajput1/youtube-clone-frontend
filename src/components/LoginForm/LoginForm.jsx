@@ -25,12 +25,6 @@ export const LoginForm = () => {
                 });
 
                 console.log(response.data);
-
-                const { accessToken, refreshToken } = response.data.data;
-
-                // Store tokens in cookies (or local storage)
-                document.cookie = `accessToken=${accessToken}; path=/`;
-                document.cookie = `refreshToken=${refreshToken}; path=/`;
             })()
 
             console.log(document.cookie);
