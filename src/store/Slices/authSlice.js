@@ -125,7 +125,7 @@ export const updateUserDetails = createAsyncThunk(
     async (data) => {
         try {
             const response = await axiosInstance.patch(
-                "/users/update-user",
+                "/users/update-account",
                 data
             );
             toast.success("Updated details successfully!!!");
