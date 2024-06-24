@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import Input2 from "./Input2";
 import { useForm } from "react-hook-form";
 import Button from "./Button";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { updateAVideo, updateUploadState } from "../store/Slices/videoSlice";
+import { updateVideo, updateUploadState } from "../store/Slices/videoSlice";
 import Spinner from "./Spinner";
 import GetImagePreview from "./GetImagePreview";
 
@@ -33,8 +33,8 @@ function EditVideo({
         }));
     };
 
-    const updateVideo = async (data) => {
-        await dispatch(updateAVideo({ videoId, data }));
+    const updateAVideo = async (data) => {
+        await dispatch(updateVideo({ videoId, data }));
         setEditVideoPopup((prev) => ({
             ...prev,
             uploadVideo: false,
@@ -63,7 +63,7 @@ function EditVideo({
         <>
             <div className="fixed mt-5 top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-70 z-50">
                 <form
-                    onSubmit={handleSubmit(updateVideo)}
+                    onSubmit={handleSubmit(updateAVideo)}
                     className=" bg-black space-y-2 border h-[30rem] overflow-y-scroll outline-none p-2"
                 >
                     <div className="sticky left-0 top-0 z-50 bg-[#222222] flex justify-between items-center border-b border-slate-500 px-3 py-1">

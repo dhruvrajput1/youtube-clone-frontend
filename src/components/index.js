@@ -6,8 +6,8 @@ import Navbar from "./Header/Navbar";
 import Search from "./Header/Search";
 import Sidebar from "./Header/Sidebar";
 import Logo from "./Logo";
-import ChannelHeader from "./channel/ChannelHeader";
-import ChannelNavigate from "./channel/ChannelNavigate";
+import ChannelHeader from "./Channel/ChannelHeader";
+import ChannelNavigate from "./Channel/ChannelNavigate";
 import VideoList from "./VideoList";
 import SignUp from "./Signup";
 import TweetAndComment from "./TweetAndComment";
@@ -25,18 +25,18 @@ import Spinner from "./Spinner";
 import UploadVideo from "./UploadVideo";
 import UploadingVideo from "./UploadingVideo";
 import TogglePublish from "./TogglePublish";
-import HeaderSection from "./dashboard/HeaderSection";
-import StatsSection from "./dashboard/StatsSection";
-import VideoTable from "./dashboard/VideoTable";
+import HeaderSection from "./Dashboard/HeaderSection";
+import StatsSection from "./Dashboard/StatsSection";
+import VideoTable from "./Dashboard/VideoTable";
 import EditVideo from "./EditVideo";
 import EditPersonalInfo from "./EditPersonalInfo";
 import ChangePassword from "./ChangePassword";
 import Layout from "../Layout";
 import EditAvatar from "./EditAvatar";
-import LoginPopup from "./LoginPopup ";
+import LoginPopup from "./LoginPopup";
 import AuthLayout from "./AuthLayout";
 import InfiniteScroll from "./InfiniteScroll"
-import SearchForSmallScreen from "./SearchForSmallScreen";
+import SearchForSmallScreen from "./Header/SearchForSmallScreen";
 
 export {
     Button,
