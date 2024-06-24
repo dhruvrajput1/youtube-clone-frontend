@@ -71,7 +71,7 @@ export default function ChannelNavigate({ username, edit }) {
                             : ""
                     }
                 >
-                    <p className="p-2">Subscribed</p>
+                    <p className="p-2">Subscribers</p>
                 </NavLink>
             </section>
         </>

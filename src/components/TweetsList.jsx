@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { timeAgo } from "../helpers/timeAgo";
 import { useDispatch } from "react-redux";
 import { Like, DeleteConfirmation, Edit } from "./index";
 import { HiOutlineDotsVertical } from "./icons";
-import { deleteTweet, editTweet } from "../store/Slices/tweetSlice";
+import { deleteTweet, updateTweet } from "../store/Slices/tweetSlice";
 
 function TweetsList({
     tweetId,
@@ -27,7 +27,7 @@ function TweetsList({
     });
 
     const handleEditTweet = (editedContent) => {
-        dispatch(editTweet({ tweetId, content: editedContent }));
+        dispatch(updateTweet({ tweetId, content: editedContent }));
         setEditState((prevState) => ({
             ...prevState,
             editing: false,

@@ -1,11 +1,10 @@
-import React from "react";
 import Button from "./Button";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { createTweet } from "../store/Slices/tweetSlice";
 import { createAComment } from "../store/Slices/commentSlice";
 
-function TweetAndComment({ tweet, comment, videoId }) {
+function TweetAndComment({ tweet, comment, videoId }) { // tweet and comment store only true or false, videoId is required if we are commenting on a video
     const { register, handleSubmit, setValue } = useForm();
     const dispatch = useDispatch();
 
