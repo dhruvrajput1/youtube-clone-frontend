@@ -13,9 +13,9 @@ function Login() {
 
     const loading = useSelector(state => state.auth?.loading);
 
-    const submit = async(data) => {
+    const submit = (data) => {
         // check if user entered email or username
-        const isEmail = data.username.include("@");
+        const isEmail = data.username.includes("@");
 
         const loginData = { // if not working check here
             email: isEmail? data.username : "",
@@ -23,8 +23,8 @@ function Login() {
             password: data.password,
         }
 
-        const response = await dispatch(userLogin(loginData));
-        const user = await dispatch(getCurrentUser);
+        const response =  dispatch(userLogin(loginData));
+        const user =  dispatch(getCurrentUser);
         if (user && response?.payload) {
             navigate("/");
         }

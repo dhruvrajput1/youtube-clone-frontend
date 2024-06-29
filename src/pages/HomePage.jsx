@@ -12,6 +12,8 @@ export default function HomePage() {
     const hasNextPage = useSelector((state) => state.video?.videos?.hasNextPage);
     const loading = useSelector((state) => state.video?.loading);
 
+    console.log("Videosss ", videos)
+
     const [page, setPage] = useState(1);
 
     useEffect(() => {

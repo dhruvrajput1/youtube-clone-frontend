@@ -1,29 +1,31 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { Search, Button, Logo, SearchForSmallScreen } from "../index.js";
 import { Link } from "react-router-dom";
-import Search from "./Search";
-import Button from "../Button";
-import Logo from "../Logo";
-import SearchForSmallScreen from "./SearchForSmallScreen";
-import { useDispatch, useSelector } from "react-redux";
+import {
+    IoCloseCircleOutline,
+    BiLike,
+    CiSearch,
+    HiOutlineVideoCamera,
+    SlMenu,
+} from "../icons.js";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { IoMdLogOut } from "react-icons/io";
-import { userLogout } from "../../store/Slices/authSlice";
-import { IoCloseCircleOutline, BiLike, CiSearch, HiOutlineVideoCamera, SlMenu } from "../icons";
+import { userLogout } from "../../store/Slices/authSlice.js";
 
-export default function Navbar() {
+function Navbar() {
+    const [toggleMenu, setToggleMenu] = useState(false);
+    const [openSearch, setOpenSearch] = useState(false);
+    const authStatus = useSelector((state) => state.auth.status);
+    const username = useSelector((state) => state.auth?.userData?.username);
+    const profileImg = useSelector((state) => state.auth.userData?.avatar.url);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const [toggleMenu, setToggleMenu] = useState(false);
-    const [openSearch, setOpenSearch] = useState(false);
-    const authStatus = useSelector((state) => state.auth?.status);
-    const username = useSelector((state) => state.auth?.userData?.username);
-    const profileImage = useSelector((state) => state.auth?.userData?.avatar.url);
-
-    const logout = () => {
-        dispatch(userLogout());
+    const logout = async () => {
+        await dispatch(userLogout());
         navigate("/");
-    }
+    };
 
     const sidePanelItems = [
         {
@@ -34,7 +36,7 @@ export default function Navbar() {
         {
             icon: <HiOutlineVideoCamera size={25} />,
             title: "My Content",
-            url: `/channel/${username}`,
+            url: "/channel/" + username
         },
     ];
 
@@ -69,7 +71,7 @@ export default function Navbar() {
                 {authStatus ? (
                     <div className="rounded-full sm:block hidden">
                         <img
-                            src={profileImage}
+                            src={profileImg}
                             alt="profileImg"
                             className="rounded-full w-10 h-10 object-cover"
                         />
@@ -163,6 +165,6 @@ export default function Navbar() {
             </nav>
         </>
     );
-
-
 }
+
+export default Navbar;

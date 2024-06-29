@@ -27,6 +27,7 @@ export const createAccount = createAsyncThunk("register", async(data) => {
         return response.data;
         
     } catch (error) {
+        console.log("error in signup,,,,,,,,,,, ", error)
         toast.error(error?.response?.data?.error);
         throw error;
     }
@@ -40,7 +41,8 @@ export const userLogin = createAsyncThunk("login", async(data) => {
         return response.data;
         
     } catch (error) {
-        toast.error(error?.response?.data?.error);
+        console.log("error in login,,,,,,,,,,, ", error)
+        toast.error(error);
         throw error;
     }
 })
@@ -85,8 +87,16 @@ export const changePassword = createAsyncThunk(
 );
 
 export const getCurrentUser = createAsyncThunk("getCurrentUser", async () => {
-    const response = await axiosInstance.get("/users/current-user");
-    return response.data.data;
+    try {
+        const response = await axiosInstance.get("/users/current-user");
+        return response.data;
+    }
+    catch(error) {
+        toast.error(error?.response?.data?.error);
+        console.log(error)
+        throw error;
+    } 
+    
 });
 
 export const updateAvatar = createAsyncThunk("updateAvatar", async (avatar) => {
