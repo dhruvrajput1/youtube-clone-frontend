@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Like, DeleteConfirmation, Edit } from "./index";
 import { HiOutlineDotsVertical } from "./icons";
 import { deleteAComment, editAComment } from "../store/Slices/commentSlice";
+import { useState } from "react";
 
 function CommentsList({
     avatar,

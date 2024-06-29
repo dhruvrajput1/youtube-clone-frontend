@@ -11,6 +11,7 @@ export const toggleVideoLike = createAsyncThunk("toggleVideoLike", async(videoId
     try {
 
         const response = await axiosInstance.post(`/likes/toggle/v/${videoId}`);
+        console.log("toggleVideoLike", response);
         return response.data;
         
     } catch (error) {

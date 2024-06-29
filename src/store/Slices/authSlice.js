@@ -24,7 +24,7 @@ export const createAccount = createAsyncThunk("register", async(data) => {
         const response = await axiosInstance.post("/users/register", formData);
         console.log(response.data);
         toast.success("Account created successfully");
-        return response.data;
+        return response.data.message;
         
     } catch (error) {
         console.log("error in signup,,,,,,,,,,, ", error)
@@ -37,8 +37,9 @@ export const userLogin = createAsyncThunk("login", async(data) => {
     try {
 
         const response = await axiosInstance.post("/users/login", data);
+        console.log("response in logging innnnnn", response);
         toast.success("Logged in successfully");
-        return response.data;
+        return response.data.message;
         
     } catch (error) {
         console.log("error in login,,,,,,,,,,, ", error)
@@ -51,7 +52,7 @@ export const userLogout = createAsyncThunk("logout", async() => {
     try {
         const response = await axiosInstance.post("/users/logout");
         toast.success("Logged out successfully");
-        return response.data;
+        return response.data.message;
     } catch (error) {
         toast.error(error?.response?.data?.error);
         throw error;
@@ -62,7 +63,7 @@ export const refreshAccessToken = createAsyncThunk("refreshAccessToken", async(d
     try {
         const response = await axiosInstance.post("/users/refresh-token", data);
         toast.success("Access token refreshed successfully");
-        return response.data;
+        return response.data.message;
     } catch (error) {
         toast.error(error?.response?.data?.error);
         throw error;
@@ -78,7 +79,7 @@ export const changePassword = createAsyncThunk(
                 data
             );
             toast.success(response.data?.message);
-            return response.data;
+            return response.data.message;
         } catch (error) {
             toast.error(error?.response?.data?.error);
             throw error;
@@ -89,7 +90,7 @@ export const changePassword = createAsyncThunk(
 export const getCurrentUser = createAsyncThunk("getCurrentUser", async () => {
     try {
         const response = await axiosInstance.get("/users/current-user");
-        return response.data;
+        return response.data.message;
     }
     catch(error) {
         toast.error(error?.response?.data?.error);
@@ -106,7 +107,7 @@ export const updateAvatar = createAsyncThunk("updateAvatar", async (avatar) => {
             avatar
         );
         toast.success("Updated details successfully!!!");
-        return response.data.data;
+        return response.data.message;
     } catch (error) {
         toast.error(error?.response?.data?.error);
         throw error;
@@ -122,7 +123,7 @@ export const updateCoverImg = createAsyncThunk(
                 coverImage
             );
             toast.success(response.data?.message);
-            return response.data.data;
+            return response.data.message;
         } catch (error) {
             toast.error(error?.response?.data?.error);
             throw error;
@@ -139,7 +140,7 @@ export const updateUserDetails = createAsyncThunk(
                 data
             );
             toast.success("Updated details successfully!!!");
-            return response.data;
+            return response.data.message;
         } catch (error) {
             toast.error(error?.response?.data?.error);
             throw error;
@@ -165,6 +166,7 @@ const authSlice = createSlice({
             state.loading = false;
             state.status = true;
             state.userData = action.payload;
+            console.log("userData,,,,,,", state.userData);
         });
         builder.addCase(userLogout.pending, (state) => {
             state.loading = true;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Search, Button, Logo, SearchForSmallScreen } from "../index.js";
 import { Link } from "react-router-dom";
 import {
@@ -16,14 +16,15 @@ import { userLogout } from "../../store/Slices/authSlice.js";
 function Navbar() {
     const [toggleMenu, setToggleMenu] = useState(false);
     const [openSearch, setOpenSearch] = useState(false);
-    const authStatus = useSelector((state) => state.auth.status);
+    const authStatus = useSelector((state) => state.auth?.status);
     const username = useSelector((state) => state.auth?.userData?.username);
-    const profileImg = useSelector((state) => state.auth.userData?.avatar.url);
+    console.log("username", username)
+    const profileImg = useSelector((state) => state.auth.userData?.message?.avatar?.url);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const logout = async () => {
-        await dispatch(userLogout());
+    const logout = () => {
+         dispatch(userLogout());
         navigate("/");
     };
 
@@ -36,7 +37,7 @@ function Navbar() {
         {
             icon: <HiOutlineVideoCamera size={25} />,
             title: "My Content",
-            url: "/channel/" + username
+            url: `/channel/${username}`
         },
     ];
 

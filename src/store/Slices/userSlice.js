@@ -11,7 +11,7 @@ const initialState = {
 export const getUserCurrentProfile = createAsyncThunk("getUserCurrentProfile", async(username) => {
     try {
         const response = await axiosInstance.get(`/users/c/${username}`);
-        return response.data.data;
+        return response.data.message;
     } catch (error) {
         toast.error(error?.response?.data?.error);
         throw error;
@@ -21,7 +21,7 @@ export const getUserCurrentProfile = createAsyncThunk("getUserCurrentProfile", a
 export const getWatchHistory = createAsyncThunk("getWatchHistory", async() => {
     try {
         const response = await axiosInstance.get(`/users/history`);
-        return response.data.data;
+        return response.data.message;
     } catch (error) {
         toast.error(error?.response?.data?.error);
         throw error;

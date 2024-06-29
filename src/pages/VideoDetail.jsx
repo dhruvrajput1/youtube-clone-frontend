@@ -16,10 +16,11 @@ import {
     getVideoComments,
 } from "../store/Slices/commentSlice";
 
-function VideoDetail() {
+export default function VideoDetail() {
     const dispatch = useDispatch();
     const { videoId } = useParams();
     const video = useSelector((state) => state.video?.video);
+    console.log("videooo in videoDetail,,, ", video);
     const comments = useSelector((state) => state.comment?.comments);
     const totalComments = useSelector((state) => state.comment?.totalComments);
     const hasNextPage = useSelector((state) => state.comment?.hasNextPage);
@@ -50,7 +51,7 @@ function VideoDetail() {
                 poster={video?.thumbnail?.url}
             />
             <Description
-                avatar={video?.owner?.avatar.url}
+                avatar={video?.owner?.avatar?.url}
                 channelName={video?.owner?.username}
                 createdAt={video?.createdAt}
                 description={video?.description}
@@ -99,5 +100,3 @@ function VideoDetail() {
         </>
     );
 }
-
-export default VideoDetail;

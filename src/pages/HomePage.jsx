@@ -41,7 +41,7 @@ export default function HomePage() {
                     {videos?.map((video) => (
                         <VideoList
                             key={video._id}
-                            avatar={video.ownerDetails?.avatar.url}
+                            avatar={video.ownerDetails?.avatar?.url}
                             duration={video.duration}
                             title={video.title}
                             thumbnail={video.thumbnail?.url}

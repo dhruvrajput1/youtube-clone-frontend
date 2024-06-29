@@ -31,8 +31,10 @@ export const getAllVideos = createAsyncThunk(
             }
 
             const response = await axiosInstance.get(url);
+            
+            console.log("all videosssssss", response.data.message);
 
-            return response.data;
+            return response.data.message;
         } catch (error) {
             toast.error(error?.response?.data?.error);
             throw error;
@@ -98,7 +100,7 @@ export const getVideoById = createAsyncThunk(
     async ({ videoId }) => {
         try {
             const response = await axiosInstance.get(`/videos/${videoId}`);
-            return response.data.data;
+            return response.data.message;
         } catch (error) {
             toast.error(error?.response?.data?.error);
             throw error;

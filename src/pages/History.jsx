@@ -9,6 +9,8 @@ export default function History() {
     const loading = useSelector((state) => state.user?.loading);
     const videos = useSelector((state) => state.user?.watchHistory);
 
+    console.log("videos in history,, ", videos);
+
     window.scrollTo(0, 0);
 
     useEffect(() => {

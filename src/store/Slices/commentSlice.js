@@ -15,7 +15,7 @@ export const createAComment = createAsyncThunk("createAComment", async ({ videoI
 
         const response = await axiosInstance.post(`/comments/${videoId}`, { content });
         toast.success("Comment created successfully");
-        return response.data;
+        return response.data.message;
 
     } catch (error) {
         toast.error(error?.response?.data?.error);
@@ -32,7 +32,7 @@ export const editAComment = createAsyncThunk(
                 { content }
             );
             toast.success(response.data?.message);
-            return response.data.data;
+            return response.data.message;
         } catch (error) {
             toast.error(error?.response?.data?.error);
             throw error;
@@ -49,7 +49,7 @@ export const deleteAComment = createAsyncThunk(
             );
             toast.success(response.data.message);
             console.log(response.data.data);
-            return response.data.data;
+            return response.data.message;
         } catch (error) {
             toast.error(error?.response?.data?.error);
             throw error;
@@ -66,7 +66,8 @@ export const getVideoComments = createAsyncThunk(
 
         try {
             const response = await axiosInstance.get(url);
-            return response.data.data;
+            console.log("getVideoComments,,,,, ", response.data.message)
+            return response.data.message;
         } catch (error) {
             toast.error(error?.response?.data?.error);
             throw error;
@@ -89,7 +90,7 @@ const commentSlice = createSlice({
         });
         builder.addCase(getVideoComments.fulfilled, (state, action) => {
             state.loading = false;
-            state.comments = [...state.comments,...action.payload.docs];
+            state.comments = [...state.comments,...action.payload.comments];
             state.totalComments = action.payload.totalDocs;
             state.hasNextPage = action.payload.hasNextPage;
         });

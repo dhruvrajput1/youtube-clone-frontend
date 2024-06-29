@@ -35,7 +35,7 @@ function TweetAndComment({ tweet, comment, videoId }) { // tweet and comment sto
                     type="submit"
                     className="bg-purple-500 px-2 py-1 text-black hover:scale-110 transition-all ease-in absolute sm:bottom-8 sm:right-8 bottom-8 right-4 text-xs sm:text-base"
                 >
-                    Send
+                    {tweet? "Tweet" : "Comment"}
                 </Button>
             </form>
         </>
