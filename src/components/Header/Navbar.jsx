@@ -19,7 +19,8 @@ function Navbar() {
     const authStatus = useSelector((state) => state.auth?.status);
     const username = useSelector((state) => state.auth?.userData?.username);
     console.log("username", username)
-    const profileImg = useSelector((state) => state.auth.userData?.message?.avatar?.url);
+    const profileImg = useSelector((state) => state.auth.userData?.avatar);
+    console.log("profileImg", profileImg)
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

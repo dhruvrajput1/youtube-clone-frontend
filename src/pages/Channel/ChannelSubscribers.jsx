@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserChannelSubscribers } from "../../store/Slices/subscriptionSlice";
+import { getUserChannelSubscribers, toggleSubscription } from "../../store/Slices/subscriptionSlice";
 import { Avatar, Button } from "../../components";
 import { Link } from "react-router-dom";
 
@@ -9,13 +9,37 @@ export default function ChannelSubscribers() {
 
     const channelId = useSelector((state) => state.user?.userProfile?._id);
 
+    console.log("channelId in channel subscribers, ", channelId);
+
     const subscribers = useSelector((state) => state.subscription?.channelSubscribers);
+
+    console.log("subscribers in channel subscribers, ", subscribers);
 
     useEffect(() => {
         if (channelId) {
             dispatch(getUserChannelSubscribers(channelId));
         }
     }, [dispatch, channelId]);
+
+    if(subscribers?.length === 0) {
+        return (
+            <div className="flex flex-col items-center justify-center">
+                <h3 className="text-2xl text-white font-bold">
+                    No subscribers yet
+                </h3>
+                <p className="text-sm text-white">
+                    Be the first to subscribe to this channel
+                </p>
+                <Button
+                    className="mt-3"
+                    variant="primary"
+                    onClick={() => dispatch(toggleSubscription(channelId))}
+                >
+                    Subscribe
+                </Button>
+            </div>
+        );
+    }
 
     return (
         <>

@@ -25,7 +25,10 @@ export default function VideoDetail() {
     const totalComments = useSelector((state) => state.comment?.totalComments);
     const hasNextPage = useSelector((state) => state.comment?.hasNextPage);
     const loading = useSelector((state) => state.comment?.loading);
+    const videoDetails = useSelector((state) => state.video?.videoDetails);
     const [page, setPage] = useState(1);
+
+    console.log("videoDetails in videoDetail,,, ", videoDetails);
 
     useEffect(() => {
         if (videoId) {
@@ -47,11 +50,11 @@ export default function VideoDetail() {
         <>
             <Navbar />
             <Video
-                src={video?.videoFile?.url}
+                src={video?.videoFile}
                 poster={video?.thumbnail?.url}
             />
             <Description
-                avatar={video?.owner?.avatar?.url}
+                avatar={video?.owner?.avatar}
                 channelName={video?.owner?.username}
                 createdAt={video?.createdAt}
                 description={video?.description}
@@ -80,7 +83,7 @@ export default function VideoDetail() {
                     {comments?.map((comment) => (
                         <CommentList
                             key={comment?._id}
-                            avatar={comment?.owner?.avatar?.url}
+                            avatar={comment?.owner?.avatar}
                             commentId={comment?._id}
                             content={comment?.content}
                             createdAt={comment?.createdAt}

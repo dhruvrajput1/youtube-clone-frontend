@@ -11,6 +11,8 @@ export default function ChannelTweets() {
 
     const tweets = useSelector((state) => state.tweet?.tweets);
 
+    console.log("tweets in channel tweets, ", tweets);
+
     useEffect(() => {
         if(userId) {
             dispatch(getUserTweets(userId));
@@ -23,12 +25,12 @@ export default function ChannelTweets() {
             {tweets?.map((tweet) => (
                 <TweetsList
                     key={tweet?._id}
-                    avatar={tweet?.ownerDetails?.avatar.url}
+                    avatar={tweet?.owner?.avatar}
                     content={tweet?.content}
                     createdAt={tweet?.createdAt}
                     likesCount={tweet?.likesCount}
                     tweetId={tweet?._id}
-                    username={tweet?.ownerDetails?.username}
+                    username={tweet?.owner?.username}
                     isLiked={tweet?.isLiked}
                 />
             ))}

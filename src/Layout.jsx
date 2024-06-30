@@ -6,11 +6,13 @@ export default function Layout() {
     return (
         <>
             <Navbar />
-            <div className="sm:flex flex-none ">
-                <Sidebar />
-            </div>
-            <div className="sm-flex-1">
-                <Outlet />
+            <div className="sm:flex flex-none">
+                <div className="">
+                    <Sidebar />
+                </div>
+                <div className="sm:flex-1">
+                    <Outlet />
+                </div>
             </div>
         </> 
     )

@@ -64,7 +64,7 @@ export default function ChannelNavigate({ username, edit }) {
                     <p className="p-2">Tweets</p>
                 </NavLink>
                 <NavLink
-                    to={`/channel/${username}/subscribed`}
+                    to={`/channel/${username}/subscribers`}
                     className={({ isActive }) =>
                         isActive
                             ? "bg-white text-purple-600 border-b-2 border-purple-600"

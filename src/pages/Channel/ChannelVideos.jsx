@@ -8,6 +8,8 @@ export default function ChannelVideos() {
 
     const userId = useSelector((state) => state.user?.userProfile?._id);
     const videos = useSelector((state) => state.video?.videos?.docs);
+
+    console.log("videos in channel videos, ", videos);
     
     const [searchParams, setSearchParams] = useState(); // it will store { sortBy, sortType}
     const [activeButton, setActiveButton] = useState("button1"); // there will be 3 buttons, [latest, popular, oldest]
@@ -78,10 +80,10 @@ export default function ChannelVideos() {
                 {videos?.map((video) => (
                     <VideoList
                         key={video._id}
-                        avatar={video.avatar?.url}
+                        avatar={video.ownerDetails.avatar}
                         duration={video.duration}
                         title={video.title}
-                        thumbnail={video.thumbnail?.url}
+                        thumbnail={video.thumbnail}
                         createdAt={video.createdAt}
                         views={video.views}
                         videoId={video._id}

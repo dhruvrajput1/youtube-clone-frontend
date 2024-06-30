@@ -13,12 +13,13 @@ const initialState = {
 export const createAComment = createAsyncThunk("createAComment", async ({ videoId, content }) => {
     try {
 
-        const response = await axiosInstance.post(`/comments/${videoId}`, { content });
+        const response = await axiosInstance.post(`/comments/${videoId}`, { content: content });
         toast.success("Comment created successfully");
         return response.data.message;
+        
 
     } catch (error) {
-        toast.error(error?.response?.data?.error);
+        toast.error(error.errors[0]);
         throw error;
     }
 })

@@ -10,6 +10,7 @@ function TweetAndComment({ tweet, comment, videoId }) { // tweet and comment sto
 
     const sendContent = (data) => {
         if (data) {
+            console.log(data);
             if (tweet) {
                 dispatch(createTweet(data));
             } else if (comment) {

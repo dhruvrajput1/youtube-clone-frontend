@@ -11,8 +11,8 @@ export const toggleVideoLike = createAsyncThunk("toggleVideoLike", async(videoId
     try {
 
         const response = await axiosInstance.post(`/likes/toggle/v/${videoId}`);
-        console.log("toggleVideoLike", response);
-        return response.data;
+        console.log("toggleVideoLike", response.data.message);
+        return response.data.message;
         
     } catch (error) {
         toast.error(error?.response?.data?.error);
@@ -23,7 +23,7 @@ export const toggleVideoLike = createAsyncThunk("toggleVideoLike", async(videoId
 export const toggleCommentLike = createAsyncThunk("toggleCommentLike", async(commentId) => {
     try {
         const reponse = await axiosInstance.post(`/likes/toggle/c/${commentId}`);
-        return reponse.data;
+        return reponse.data.message;
     } catch (error) {
         toast.error(error?.response?.data?.error);
         throw error;
@@ -33,7 +33,7 @@ export const toggleCommentLike = createAsyncThunk("toggleCommentLike", async(com
 export const toggleTweetLike = createAsyncThunk("toggleTweetLike", async(tweetId) => {
     try {
         const reponse = await axiosInstance.post(`/likes/toggle/t/${tweetId}`);
-        return reponse.data;
+        return reponse.data.message;
     } catch (error) {
         toast.error(error?.response?.data?.error);
         throw error;
@@ -43,7 +43,7 @@ export const toggleTweetLike = createAsyncThunk("toggleTweetLike", async(tweetId
 export const getLikedVideos = createAsyncThunk("getLikedVideos", async() => {
     try {
         const response = await axiosInstance.get("/likes/videos");
-        return response.data;
+        return response.data.message;
     } catch (error) {
         toast.error(error?.response?.data?.error);
         throw error;
@@ -61,6 +61,7 @@ const likeSlice = createSlice({
         builder.addCase(getLikedVideos.fulfilled, (state, action) => {
             state.loading = false;
             state.likedVideos = action.payload;
+            console.log("state.likedVideos", state.likedVideos);
         })
     }
 })

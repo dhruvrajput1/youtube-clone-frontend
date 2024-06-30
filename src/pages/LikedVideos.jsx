@@ -10,6 +10,8 @@ export default function LikedVideos() {
 
     const loading = useSelector((state) => state.like?.loading);
     const likedVideos = useSelector((state) => state.like?.likedVideos);
+
+    console.log("liked videos,,,,, ", likedVideos);
     window.scrollTo(0, 0);
 
     useEffect(() => {
@@ -28,15 +30,15 @@ export default function LikedVideos() {
 
     return (
         <>
-            <Container>
+<Container>
                 <div className="grid max-h-screen overflow-y-scroll lg:grid-cols-3 sm:grid-cols-2 text-white mb-20 sm:mb-0">
                     {likedVideos?.map((video) => (
                         <VideoList
                             key={video.likedVideo._id}
-                            avatar={video.likedVideo.ownerDetails?.avatar?.url}
+                            avatar={video.likedVideo.ownerDetails?.avatar}
                             duration={video.likedVideo.duration}
                             title={video.likedVideo.title}
-                            thumbnail={video.likedVideo.thumbnail?.url}
+                            thumbnail={video.likedVideo.thumbnail}
                             createdAt={video.likedVideo.createdAt}
                             views={video.likedVideo.views}
                             channelName={

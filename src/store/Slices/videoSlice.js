@@ -12,6 +12,7 @@ const initialState = {
         hasNextPage: false,
     },
     video: null,
+    videoDetails: null,
     publishToggled: false,
 };
 
@@ -148,8 +149,9 @@ const videoSlice = createSlice({
         builder.addCase(publishAvideo.pending, (state) => {
             state.uploading = true;
         });
-        builder.addCase(publishAvideo.fulfilled, (state) => {
+        builder.addCase(publishAvideo.fulfilled, (state, action) => {
             state.uploading = false;
+            state.videoDetails = action.payload;
             state.uploaded = true;
         });
         builder.addCase(updateVideo.pending, (state) => {

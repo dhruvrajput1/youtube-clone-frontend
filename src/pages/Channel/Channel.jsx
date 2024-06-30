@@ -11,6 +11,8 @@ export default function Channel() {
     
     const channel = useSelector((state) => state.user?.userProfile);
 
+    console.log("channel in channel, ", channel);
+
     useEffect(() => {
         dispatch(getUserCurrentProfile(username));
     }, [dispatch, username]);
@@ -22,9 +24,9 @@ export default function Channel() {
             {channel && (
                 <ChannelHeader
                     username={username}
-                    coverImage={channel?.coverImage.url}
-                    avatar={channel?.avatar.url}
-                    subscribedCount={channel?.channelsSubscribedToCount}
+                    coverImage={channel?.coverImage}
+                    avatar={channel?.avatar}
+                    subscribedCount={channel?.channelsSubscriberdToCount}
                     fullName={channel?.fullName}
                     subscribersCount={channel?.subscribersCount}
                     isSubscribed={channel?.isSubscribed}
