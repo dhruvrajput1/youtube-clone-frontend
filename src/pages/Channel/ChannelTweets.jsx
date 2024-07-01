@@ -25,12 +25,12 @@ export default function ChannelTweets() {
             {tweets?.map((tweet) => (
                 <TweetsList
                     key={tweet?._id}
-                    avatar={tweet?.owner?.avatar}
+                    avatar={tweet?.ownerDetails?.avatar}
                     content={tweet?.content}
                     createdAt={tweet?.createdAt}
                     likesCount={tweet?.likesCount}
                     tweetId={tweet?._id}
-                    username={tweet?.owner?.username}
+                    username={tweet?.ownerDetails?.username}
                     isLiked={tweet?.isLiked}
                 />
             ))}

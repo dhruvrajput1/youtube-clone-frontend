@@ -67,7 +67,8 @@ export const getVideoComments = createAsyncThunk(
         try {
             const response = await axiosInstance.get(url);
             console.log("getVideoComments,,,,, ", response.data.message)
-            return response.data.message;
+            console.log("comments", response.data.message.docs)
+            return response.data.message.docs;
         } catch (error) {
             toast.error(error?.message);
             throw error;
@@ -90,7 +91,7 @@ const commentSlice = createSlice({
         });
         builder.addCase(getVideoComments.fulfilled, (state, action) => {
             state.loading = false;
-            state.comments = [...state.comments,...action.payload.comments];
+            state.comments = [...state.comments,...action.payload];
             state.totalComments = action.payload.totalDocs;
             state.hasNextPage = action.payload.hasNextPage;
         });
