@@ -13,7 +13,7 @@ export const getUserCurrentProfile = createAsyncThunk("getUserCurrentProfile", a
         const response = await axiosInstance.get(`/users/c/${username}`);
         return response.data.message;
     } catch (error) {
-        toast.error(error?.response?.data?.error);
+        toast.error(error?.message);
         throw error;
     }
 });
@@ -23,7 +23,7 @@ export const getWatchHistory = createAsyncThunk("getWatchHistory", async() => {
         const response = await axiosInstance.get(`/users/history`);
         return response.data.message;
     } catch (error) {
-        toast.error(error?.response?.data?.error);
+        toast.error(error?.message);
         throw error;
     }
 });

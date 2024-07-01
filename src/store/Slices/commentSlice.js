@@ -14,12 +14,12 @@ export const createAComment = createAsyncThunk("createAComment", async ({ videoI
     try {
 
         const response = await axiosInstance.post(`/comments/${videoId}`, { content: content });
-        toast.success("Comment created successfully");
+        toast.success(response.data.data);
         return response.data.message;
         
 
     } catch (error) {
-        toast.error(error.errors[0]);
+        toast.error(error.message);
         throw error;
     }
 })
@@ -32,10 +32,10 @@ export const editAComment = createAsyncThunk(
                 `/comments/c/${commentId}`,
                 { content }
             );
-            toast.success(response.data?.message);
+            toast.success(response.data?.data);
             return response.data.message;
         } catch (error) {
-            toast.error(error?.response?.data?.error);
+            toast.error(error?.message);
             throw error;
         }
     }
@@ -48,11 +48,10 @@ export const deleteAComment = createAsyncThunk(
             const response = await axiosInstance.delete(
                 `/comments/c/${commentId}`
             );
-            toast.success(response.data.message);
-            console.log(response.data.data);
+            toast.success(response.data.data);
             return response.data.message;
         } catch (error) {
-            toast.error(error?.response?.data?.error);
+            toast.error(error?.message);
             throw error;
         }
     }
@@ -70,7 +69,7 @@ export const getVideoComments = createAsyncThunk(
             console.log("getVideoComments,,,,, ", response.data.message)
             return response.data.message;
         } catch (error) {
-            toast.error(error?.response?.data?.error);
+            toast.error(error?.message);
             throw error;
         }
     }

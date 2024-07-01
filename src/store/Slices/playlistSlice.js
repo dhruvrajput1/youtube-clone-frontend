@@ -13,7 +13,7 @@ export const createPlaylist = createAsyncThunk("createPlaylist", async({name, de
         toast.success("Playlist created successfully");
         return response.data.message;
     } catch (error) {
-        toast.error(error?.response?.data?.error);
+        toast.error(error?.message);
         throw error;
     }
 })
@@ -23,7 +23,7 @@ export const addVideoToPlaylist = createAsyncThunk("addVideoToPlaylist", async({
         const response = await axiosInstance.patch(`/playlists/add/${videoId}/${playlistId}`);
         return response.data.message;
     } catch (error) {
-        toast.error(error?.response?.data?.error);
+        toast.error(error?.message);
         throw error;
     }
 })
@@ -33,7 +33,7 @@ export const removeVideoFromPlaylist = createAsyncThunk("removeVideoFromPlaylist
         const response = await axiosInstance.patch(`/playlists/remove/${videoId}/${playlistId}`);
         return response.data.message;
     } catch (error) {
-        toast.error(error?.response?.data?.error);
+        toast.error(error?.message);
         throw error;
     }
 })
@@ -43,7 +43,7 @@ export const getPlaylistById = createAsyncThunk("getPlaylistById", async(playlis
         const response = await axiosInstance.get(`/playlists/${playlistId}`);
         return response.data.message;
     } catch (error) {
-        toast.error(error?.response?.data?.error);
+        toast.error(error?.message);
         throw error;
     }
 })
@@ -51,9 +51,10 @@ export const getPlaylistById = createAsyncThunk("getPlaylistById", async(playlis
 export const updatePlaylist = createAsyncThunk("updatePlaylist", async({playlistId, name, description}) => {
     try {
         const response = await axiosInstance.patch(`/playlists/${playlistId}`, {name, description});
+        toast.success(response.data.data);
         return response.data.message;
     } catch (error) {
-        toast.error(error?.response?.data?.error);
+        toast.error(error?.message);
         throw error;
     }
 })
@@ -61,9 +62,10 @@ export const updatePlaylist = createAsyncThunk("updatePlaylist", async({playlist
 export const deletePlaylist = createAsyncThunk("deletePlaylist", async(playlistId) => {
     try {
         const response = await axiosInstance.delete(`/playlists/${playlistId}`);
+        toast.success(response.data.data);
         return response.data.message;
     } catch (error) {
-        toast.error(error?.response?.data?.error);
+        toast.error(error?.message);
         throw error;
     }
 })
@@ -73,7 +75,7 @@ export const getUserPlaylists = createAsyncThunk("getUserPlaylists", async(userI
         const response = await axiosInstance.get(`/playlists/user/${userId}`);
         return response.data.message;
     } catch (error) {
-        toast.error(error?.response?.data?.error);
+        toast.error(error?.message);
         throw error;
     }
 })

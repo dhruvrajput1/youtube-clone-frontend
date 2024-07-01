@@ -28,6 +28,8 @@ export default function VideoDetail() {
     const videoDetails = useSelector((state) => state.video?.videoDetails);
     const [page, setPage] = useState(1);
 
+    console.log("commentsssssssssss", comments);
+
     console.log("videoDetails in videoDetail,,, ", videoDetails);
 
     useEffect(() => {

@@ -24,7 +24,7 @@ export const getUserChannelSubscribers = createAsyncThunk("getUserChannelSubscri
         const response = await axiosInstance.get(`/subscriptions/u/${subscriberId}`);
         return response.data.message;
     } catch (error) {
-        toast.error(error?.response?.data?.error);
+        toast.error(error?.message);
         throw error;
     }
 })
@@ -34,7 +34,7 @@ export const getSubscribedChannels = createAsyncThunk("getSubscribedChannels", a
         const response = await axiosInstance.get(`/subscriptions/c/${channelId}`);
         return response.data.message;
     } catch (error) {
-        toast.error(error?.response?.data?.error);
+        toast.error(error?.message);
         throw error;
     }
 })
