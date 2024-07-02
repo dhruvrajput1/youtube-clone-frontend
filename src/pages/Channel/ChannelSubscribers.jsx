@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserChannelSubscribers, toggleSubscription } from "../../store/Slices/subscriptionSlice";
+import { getUserChannelSubscribers } from "../../store/Slices/subscriptionSlice";
 import { Avatar, Button } from "../../components";
 import { Link } from "react-router-dom";
 
@@ -23,21 +23,11 @@ export default function ChannelSubscribers() {
 
     if(subscribers?.length === 0) {
         return (
-            <div className="flex flex-col items-center justify-center">
-                <h3 className="text-2xl text-white font-bold">
-                    No subscribers yet
-                </h3>
-                <p className="text-sm text-white">
-                    Be the first to subscribe to this channel
-                </p>
-                <Button
-                    className="mt-3"
-                    variant="primary"
-                    onClick={() => dispatch(toggleSubscription(channelId))}
-                >
-                    Subscribe
-                </Button>
+            // display no subscribers message
+            <div className="flex flex-col items-center justify-center gap-3">
+                <h1 className="text-xl">No Subscribers</h1>
             </div>
+
         );
     }
 
@@ -50,7 +40,7 @@ export default function ChannelSubscribers() {
                 >
                     <div className="flex gap-3 items-center">
                         <Avatar
-                            src={subscriber?.subscriber?.avatar.url}
+                            src={subscriber?.subscriber?.avatar}
                             channelName={subscriber?.subscriber?.username}
                         />
                         <div>

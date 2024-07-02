@@ -3,6 +3,9 @@ import { ImBin, GrEdit } from "../../components/icons";
 import TogglePublish from "../TogglePublish";
 
 function VideoTable({ videos, setPopUp, setVideoDetails }) {
+
+    console.log(videos)
+
     return (
         <>
             <section className="mx-auto w-full overflow-x-scroll">
@@ -56,8 +59,8 @@ function VideoTable({ videos, setPopUp, setVideoDetails }) {
                                     </span>
                                 </td>
                                 <td className="py-2 px-4 border-b border-slate-500">
-                                    {video?.createdAt?.day}/
-                                    {video?.createdAt?.month}/
+                                    {video?.createdAt}
+                                    {video?.createdAt?.month}
                                     {video?.createdAt?.year}
                                 </td>
                                 <td className="py-2 border-b border-slate-500">

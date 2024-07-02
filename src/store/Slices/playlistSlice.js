@@ -73,6 +73,7 @@ export const deletePlaylist = createAsyncThunk("deletePlaylist", async(playlistI
 export const getUserPlaylists = createAsyncThunk("getUserPlaylists", async(userId) => {
     try {
         const response = await axiosInstance.get(`/playlists/user/${userId}`);
+        console.log("get user playlist in playlistSlice", response.data);
         return response.data.message;
     } catch (error) {
         toast.error(error?.message);

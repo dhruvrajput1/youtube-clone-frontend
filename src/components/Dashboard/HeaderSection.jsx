@@ -13,9 +13,9 @@ function HeaderSection({ username, setPopUp }) {
                 </p>
             </div>
             <div>
-                <Button
-                    className="bg-purple-500 p-2 font-semibold"
-                    textColor="text-black"
+                <button
+                    className="bg-purple-500 p-2 font-semibold text-black"
+                    type="button"
                     onClick={() =>
                         setPopUp((prev) => ({
                             ...prev,
@@ -25,7 +25,7 @@ function HeaderSection({ username, setPopUp }) {
                 >
                     {" "}
                     Upload Video
-                </Button>
+                </button>
             </div>
         </section>
     );

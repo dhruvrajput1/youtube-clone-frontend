@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, Input2, UploadingVideo } from "./index";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,9 +19,9 @@ function UploadVideo({ setUploadVideoPopup }) {
     const uploading = useSelector((state) => state.video.uploading);
     const uploaded = useSelector((state) => state.video.uploaded);
 
-    const publishVideo = async (data) => {
+    const publishVideo = (data) => {
         setVideoSize(Math.floor(data.videoFile[0].size / (1024 * 1024)));
-        await dispatch(publishAvideo(data));
+        dispatch(publishAvideo(data));
     };
 
     if (uploading) {

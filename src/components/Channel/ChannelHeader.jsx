@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, EditAvatar } from "../index";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleSubscription } from "../../store/Slices/subscriptionSlice";
+import { toggleSubscription } from "../../store/Slices/subscriptionSlice.js";
 import { Link } from "react-router-dom";
 
 function ChannelHeader({
@@ -16,8 +16,8 @@ function ChannelHeader({
     edit,
 }) {
     const [localIsSubscribed, setLocalIsSubscribed] = useState(isSubscribed);
-    const [localSubscribersCount, setLocalSubscribersCount] =
-        useState(subscribersCount);
+    const [localSubscribersCount, setLocalSubscribersCount] = useState(subscribersCount);
+
     const dispatch = useDispatch();
     const userProfile = useSelector((state) => state.user?.profileData?._id);
     const user = useSelector((state) => state.auth?.userData?._id);
@@ -28,7 +28,9 @@ function ChannelHeader({
     }, [subscribersCount, isSubscribed]);
 
     const handleSubscribe = () => {
+        console.log("dispatched");
         dispatch(toggleSubscription(channelId));
+        
         setLocalIsSubscribed((prev) => !prev);
         if (localIsSubscribed) {
             setLocalSubscribersCount((prev) => prev - 1);
@@ -102,18 +104,20 @@ function ChannelHeader({
                             </Link>
                         )}
                         {user != userProfile && !edit && (
-                            <Button
-                                onClick={handleSubscribe}
+                            <button
+                            type="button"
+                                
                                 className="border-slate-500 hover:scale-110 transition-all text-black font-bold px-4 py-1 bg-purple-500"
+                                onClick={handleSubscribe}
                             >
                                 {localIsSubscribed ? "Subscribed" : "Subscribe"}
-                            </Button>
+                            </button>
                         )}
                         {edit && (
                             <Link to={`/channel/${username}`}>
-                                <Button className="border-slate-500 hover:scale-110 transition-all text-black font-bold px-4 py-1 bg-purple-500">
+                                <button type="button" className="border-slate-500 hover:scale-110 transition-all text-black font-bold px-4 py-1 bg-purple-500">
                                     View Channel
-                                </Button>
+                                </button>
                             </Link>
                         )}
                     </div>

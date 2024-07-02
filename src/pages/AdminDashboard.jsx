@@ -22,6 +22,7 @@ export default function AdminDashboard() {
     const videos = useSelector((state) => state.dashboard?.channelVideos);
     const username = useSelector((state) => state.auth?.userData?.username);
     const uploaded = useSelector((state) => state.video?.uploaded);
+    console.log("Uploaded", uploaded);
     const publishToggled = useSelector((state) => state.video?.publishToggled);
     const deleting = useSelector((state) => state.video?.loading); // loading
 

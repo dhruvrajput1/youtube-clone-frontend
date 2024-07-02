@@ -120,7 +120,7 @@ export const updateCoverImg = createAsyncThunk(
                 "/users/update-coverImg",
                 coverImage
             );
-            toast.success(response.data?.message);
+            toast.success(response.data?.data);
             return response.data.message;
         } catch (error) {
             toast.error(error?.message);
@@ -140,7 +140,7 @@ export const updateUserDetails = createAsyncThunk(
             toast.success("Updated details successfully!!!");
             return response.data.message;
         } catch (error) {
-            toast.error(error?.response?.data?.error);
+            toast.error(error?.message);
             throw error;
         }
     }

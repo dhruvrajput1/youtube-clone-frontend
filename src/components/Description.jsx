@@ -77,14 +77,15 @@ function Description({
                                 </div>
                             </Link>
                             <div onClick={handleSubsribe}>
-                                <Button
+                                <button
+                                    type="button"
                                     onClick={handleSubscribe}
                                     className="border-slate-500 hover:scale-110 transition-all text-black font-bold px-4 py-1 bg-purple-500"
                                 >
                                     {localIsSubscribed
                                         ? "Subscribed"
                                         : "Subscribe"}
-                                </Button>
+                                </button>
                             </div>
                         </div>
                     </div>

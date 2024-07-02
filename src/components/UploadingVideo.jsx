@@ -80,19 +80,20 @@ function UploadingVideo({
                         </div>
                     </div>
                     <div className="flex gap-2">
-                        <Button
+                        <button
                             className="border flex-1 p-2"
+                            type="button"
                             onClick={handleCancelAndFinish}
                         >
                             Cancel
-                        </Button>
-                        <Button
-                            className="flex-1 bg-purple-500 p-2"
-                            textColor="text-black"
+                        </button>
+                        <button
+                            className="flex-1 bg-purple-500 p-2 text-black"
+                            type="button"
                             onClick={handleCancelAndFinish}
                         >
                             Finish
-                        </Button>
+                        </button>
                     </div>
                 </div>
             </div>

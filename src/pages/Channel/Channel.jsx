@@ -11,6 +11,9 @@ export default function Channel() {
     
     const channel = useSelector((state) => state.user?.userProfile);
 
+    const channelId = channel?._id;
+    const userId = useSelector((state) => state.auth?.userData?._id);
+
     console.log("channel in channel, ", channel);
 
     useEffect(() => {
@@ -31,6 +34,7 @@ export default function Channel() {
                     subscribersCount={channel?.subscribersCount}
                     isSubscribed={channel?.isSubscribed}
                     channelId={channel?._id}
+                    edit={channelId === userId ? true : false}
                 />
             )}
             <ChannelNavigate username={username} />
