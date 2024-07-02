@@ -26,7 +26,7 @@ export default function MySubscriptions() {
                         className="flex flex-col items-center overflow-x-scroll"
                     >
                         <Avatar
-                            src={subscription?.subscribedChannel?.avatar.url}
+                            src={subscription?.subscribedChannel?.avatar}
                             channelName={
                                 subscription?.subscribedChannel?.username
                             }
@@ -48,7 +48,7 @@ export default function MySubscriptions() {
                             <VideoList
                                 key={subscription?.subscribedChannel?._id}
                                 avatar={
-                                    subscription?.subscribedChannel?.avatar.url
+                                    subscription?.subscribedChannel?.avatar
                                 }
                                 duration={
                                     subscription?.subscribedChannel?.latestVideo

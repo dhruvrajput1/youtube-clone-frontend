@@ -35,6 +35,7 @@ export default function ChannelSubscribers() {
         <>
             {subscribers?.map((subscriber) => (
                 <Link
+                    to={`/channel/${subscriber?.subscriber?.username}`}
                     key={subscriber?.subscriber?._id}
                     className="flex border-b border-slate-500 px-3 py-1 justify-between items-center text-white"
                 >
@@ -54,11 +55,11 @@ export default function ChannelSubscribers() {
                         </div>
                     </div>
                     <div>
-                        <Button className="bg-purple-500 text-black text-xs py-1 px-2">
+                        <button className="bg-purple-500 text-black text-xs py-1 px-2" type="button">
                             {subscriber?.subscriber?.subscribedToSubscriber
                                 ? "Subscribed"
                                 : "subscribe"}
-                        </Button>
+                        </button>
                     </div>
                 </Link>
             ))}

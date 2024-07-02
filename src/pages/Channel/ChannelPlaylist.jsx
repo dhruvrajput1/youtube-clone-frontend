@@ -38,14 +38,15 @@ export default function ChannelPlaylist() {
                 )}
                 {authId === userId && (
                     <div className="w-full flex justify-center mt-5">
-                        <Button
+                        <button
+                            type="button"
                             className="bg-purple-500 text-sm p-2"
                             onClick={() =>
                                 setOpenCreatePlaylists((prev) => !prev)
                             }
                         >
                             Create Playlist
-                        </Button>
+                        </button>
                     </div>
                 )}
                 {openCreatePlaylist && (

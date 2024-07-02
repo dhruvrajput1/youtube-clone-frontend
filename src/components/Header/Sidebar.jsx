@@ -93,7 +93,7 @@ export default function Sidebar() {
                         ))}
                     </div>
 
-                    <div className="space-y-4 mb-10">
+                    <div className="space-y-4 mb-10 pb-10">
                         {username && (
                             <div
                                 className="flex items-center gap-2 justify-center sm:justify-start hover:bg-purple-500 cursor-pointer py-1 px-2 border border-slate-600"
@@ -105,12 +105,12 @@ export default function Sidebar() {
                                 </span>
                             </div>
                         )}
-                        <div className="flex items-center gap-2 justify-center sm:justify-start hover:bg-purple-500 cursor-pointer py-1 px-2 border border-slate-600">
+                        {/* <div className="flex items-center gap-2 justify-center sm:justify-start hover:bg-purple-500 cursor-pointer py-1 px-2 border border-slate-600">
                             <CiSettings size={25} />
                             <span className="text-base hidden md:block">
                                 Settings
                             </span>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

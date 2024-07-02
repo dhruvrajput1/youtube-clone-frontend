@@ -51,7 +51,7 @@ function UploadVideo({ setUploadVideoPopup }) {
 
     return (
         <>
-            <div className="fixed top-5 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-70 z-30">
+            <div className="fixed top-5 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-70 z-100 ">
                 <div className="relative w-[95vw] sm:w-3/4 h-[80vh] sm:h-[80vh] mx-auto text-white border overflow-y-scroll bg-black">
                     <form
                         onSubmit={handleSubmit(publishVideo)}
