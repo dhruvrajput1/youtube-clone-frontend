@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { BiSolidLike, BiSolidDislike } from "../components/icons";
+import { FaHeart } from "react-icons/fa";
 import {
     toggleCommentLike,
     toggleTweetLike,
@@ -38,15 +38,15 @@ function Like({ isLiked, likesCount = 0, tweetId, commentId, videoId, size }) {
     return (
         <>
             <div className="flex items-center gap-1">
-                <BiSolidLike
+                <FaHeart
                     size={size}
                     onClick={handleLikeToggle}
                     className={`cursor-pointer ${
-                        localIsLiked ? "text-purple-500" : ""
+                        localIsLiked ? "text-pink-500" : ""
                     }`}
                 />
+                <hr />
                 <span className="text-xs mr-3">{localLikesCount}</span>
-                <BiSolidDislike size={size} />
             </div>
         </>
     );

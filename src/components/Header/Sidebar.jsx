@@ -27,12 +27,12 @@ export default function Sidebar() {
         },
         {
             icon: <HiOutlineVideoCamera size={25} />,
-            title: "My Content",
+            title: "Your Channel",
             url: `/channel/${username}`,
         },
         {
             icon: <IoFolderOutline size={25} />,
-            title: "Collections",
+            title: "Admin Dashboard",
             url: "/collections",
         },
         {
@@ -55,7 +55,7 @@ export default function Sidebar() {
         },
         {
             icon: <IoFolderOutline size={25} />,
-            title: "Collections",
+            title: "Admin",
             url: "/collections",
         },
         {
@@ -80,10 +80,10 @@ export default function Sidebar() {
                                 to={item.url}
                                 key={item.title}
                                 className={({ isActive }) =>
-                                    isActive ? "bg-purple-500" : ""
+                                    isActive ? "bg-pink-500" : ""
                                 }
                             >
-                                <div className="flex items-center gap-2 justify-center sm:justify-start hover:bg-purple-500 cursor-pointer py-1 px-2 border border-slate-600">
+                                <div className="flex items-center gap-2 justify-center sm:justify-start hover:bg-pink-500 cursor-pointer py-1 px-2 border border-slate-600">
                                     {item.icon}
                                     <span className="text-base hidden md:block">
                                         {item.title}
