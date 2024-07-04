@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NoVideosFound, VideoList } from "../components";
 import HomeSkeleton from "../skeleton/HomeSkeleton";
-import { getAllVideos, makeVideosNull } from "../store/Slices/videoSlice";
+import { getAllVideos } from "../store/Slices/videoSlice";
 import { FaFilter } from "react-icons/fa";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { useParams, useSearchParams } from "react-router-dom";
@@ -26,7 +26,7 @@ function SearchVideos() {
             })
         );
         setFilterOpen(false);
-        return () => dispatch(makeVideosNull());
+        // return () => dispatch(makeVideosNull());
     }, [dispatch, query, searchParams]);
 
     const handleSortParams = (newSortBy, newSortType = "asc") => {
@@ -145,11 +145,11 @@ function SearchVideos() {
                         videos?.docs?.map((video) => (
                             <VideoList
                                 key={video?._id}
-                                thumbnail={video?.thumbnail?.url}
+                                thumbnail={video?.thumbnail}
                                 duration={video?.duration}
                                 title={video?.title}
                                 views={video?.views}
-                                avatar={video?.ownerDetails?.avatar?.url}
+                                avatar={video?.ownerDetails?.avatar}
                                 channelName={video?.ownerDetails?.username}
                                 createdAt={video?.createdAt}
                                 videoId={video?._id}
