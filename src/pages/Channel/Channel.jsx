@@ -34,7 +34,6 @@ export default function Channel() {
                     subscribersCount={channel?.subscribersCount}
                     isSubscribed={channel?.isSubscribed}
                     channelId={channel?._id}
-                    edit={channelId === userId ? true : false}
                 />
             )}
             <ChannelNavigate username={username} />

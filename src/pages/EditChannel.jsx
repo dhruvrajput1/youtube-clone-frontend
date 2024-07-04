@@ -5,6 +5,9 @@ import { Outlet } from "react-router-dom";
 function EditChannel() {
     const channel = useSelector((state) => state.auth?.userData);
     const loading = useSelector((state) => state.auth?.loading);
+
+    console.log("channel: ", channel)
+
     window.scrollTo(0, 0);
     return (
         <>
@@ -22,8 +25,8 @@ function EditChannel() {
             {channel && (
                 <ChannelHeader
                     username={channel?.username}
-                    coverImage={channel?.coverImage.url}
-                    avatar={channel?.avatar.url}
+                    coverImage={channel?.coverImage}
+                    avatar={channel?.avatar}
                     subscribedCount={channel?.channelsSubscribedToCount}
                     fullName={channel?.fullName}
                     subscribersCount={channel?.subcribersCount}

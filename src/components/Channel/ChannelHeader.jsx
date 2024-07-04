@@ -19,7 +19,7 @@ function ChannelHeader({
     const [localSubscribersCount, setLocalSubscribersCount] = useState(subscribersCount);
 
     const dispatch = useDispatch();
-    const userProfile = useSelector((state) => state.user?.profileData?._id);
+    const userProfile = useSelector((state) => state.user?.userProfile?._id);
     const user = useSelector((state) => state.auth?.userData?._id);
 
     useEffect(() => {

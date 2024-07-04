@@ -13,6 +13,7 @@ const Input = React.forwardRef(function Input(
                 </label>
             )}
             <input
+                autoComplete="off"
                 type={type}
                 placeholder={placeholder}
                 className={`px-3 py-2 bg-[#0E0F0F] text-white outline-none focus:bg-[#222222] duration-200 border border-slate-600 w-full ${className}`}

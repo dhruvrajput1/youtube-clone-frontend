@@ -36,12 +36,11 @@ export const userLogin = createAsyncThunk("login", async(data) => {
     try {
 
         const response = await axiosInstance.post("/users/login", data);
-        console.log("response in logging innnnnn", response);
         toast.success("Logged in successfully");
         return response.data.message;
         
     } catch (error) {
-        toast.error(error?.message);
+        toast.error("Login Failed", error.message);
         throw error;
     }
 })
@@ -79,6 +78,7 @@ export const changePassword = createAsyncThunk(
             toast.success(response.data?.data);
             return response.data.message;
         } catch (error) {
+            console.log(error);
             toast.error(error?.message);
             throw error;
         }
