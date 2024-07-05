@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, Button, Logo, SearchForSmallScreen } from "../index.js";
+import { Search, Button, Logo, SearchForSmallScreen, Avatar } from "../index.js";
 import { Link } from "react-router-dom";
 import {
     IoCloseCircleOutline,
@@ -20,7 +20,7 @@ function Navbar() {
     const username = useSelector((state) => state.auth?.userData?.username);
     console.log("username", username)
     const profileImg = useSelector((state) => state.auth.userData?.avatar);
-    console.log("profileImg", profileImg)
+    // console.log("profileImg", profileImg)
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -72,8 +72,9 @@ function Navbar() {
                 {/* login and signup butons for larger screens */}
                 {authStatus ? (
                     <div className="rounded-full sm:block hidden">
-                        <img
+                        <Avatar
                             src={profileImg}
+                            channelName={username}
                             alt="profileImg"
                             className="rounded-full w-10 h-10 object-cover"
                         />

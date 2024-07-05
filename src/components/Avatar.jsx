@@ -6,7 +6,7 @@ function Avatar({ src, channelName }) {
 
     const handleAvatarClick = (e) => {
         e.stopPropagation()
-        navigate(`/channel/${channelName}`);
+        navigate(`/channel/${channelName}/videos`);
     };
     return (
         <>

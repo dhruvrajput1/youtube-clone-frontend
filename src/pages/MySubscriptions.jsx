@@ -9,6 +9,8 @@ export default function MySubscriptions() {
     const subscriptions = useSelector((state) => state.subscription?.mySubscriptions);
     const subscriberId = useSelector((state) => state.auth?.userData?._id);
 
+    console.log("subscriptions", subscriptions);
+
     useEffect(() => {
         if(subscriptions) {
             dispatch(getSubscribedChannels(subscriberId));
@@ -60,7 +62,7 @@ export default function MySubscriptions() {
                                 }
                                 thumbnail={
                                     subscription?.subscribedChannel?.latestVideo
-                                        ?.thumbnail?.url
+                                        ?.thumbnail
                                 }
                                 createdAt={
                                     subscription?.subscribedChannel?.latestVideo
